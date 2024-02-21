@@ -16,8 +16,6 @@ const ItemsUploaded: React.FC = () => {
   };
   useEffect(getUploadsEffect, []);
 
-  //   const css = `.upload-table{width: 100%}
-  // .table-div{width:100%;display: table-header-group}`;
   return (
     <div className="items-list">
       {/* <style>{css}</style> */}
@@ -53,7 +51,3 @@ const ItemsUploaded: React.FC = () => {
 };
 
 export default ItemsUploaded;
-
-// {items.map((item, i) => (
-//   <pre key={i}>{JSON.stringify(item, undefined, 2)}</pre>
-// ))}

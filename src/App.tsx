@@ -51,7 +51,7 @@ const App: React.FC = () => {
             </>
           ):(
             <div className="item-details-1">
-              <ItemsUploaded />
+              <ItemsUploaded/>
             </div>
           )}
         </UserContext.Provider>
