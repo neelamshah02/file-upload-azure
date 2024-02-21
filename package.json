@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "docker": "sh ./scripts/docker.sh",
@@ -44,5 +44,5 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-  "homepage": "https://{user-name}.github.io/{repo-name}"
+  "homepage": "https://neelamshah02.github.io/file-upload-azure"
 }
