@@ -1,0 +1,9 @@
+on:
+  push:
+    branches: -master
+
+jobs:
+  build:
+    runs:
+      using: "node20"
+      main: "index.tsx"
