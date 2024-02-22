@@ -1,5 +1,5 @@
-import React, { useContext, useRef } from 'react';
-import { UploadsViewStateContext } from '../contexts/viewStateContext';
+import React, { useContext, useRef } from "react";
+import { UploadsViewStateContext } from "../contexts/viewStateContext";
 
 const InputFile: React.FC = () => {
   const context = useContext(UploadsViewStateContext);
@@ -14,14 +14,14 @@ const InputFile: React.FC = () => {
   return (
     <div className="input-file">
       <input
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         ref={inputFileRef}
         type="file"
         multiple={true}
-        onChange={e => uploadFiles(e.target.files)}
+        onChange={(e) => uploadFiles(e.target.files)}
       />
       <button onClick={() => showFileDialog()}>
-        Click here to Upload File
+        Trykk her for å last opp fil
       </button>
     </div>
   );

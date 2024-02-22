@@ -35,25 +35,29 @@ const ContainerList: React.FC<profile> = (props) => {
 
   return (
     <div className="container-list">
-      <h3>Projects</h3>
-      {access ? (
-        items.map((item, i) => (
-          <div key={i}>
-            {item.name === "upload" ? (
-              <button onClick={() => onContainerClick(item.name)}>
-                Refresh Uploads
-              </button>
-            ) : (
-              <div></div>
-            )}
+      <div className="splitContent">
+        <img src="../../forsvar.jpg" alt="forvars logo" className="logoImage" />
+        {access ? (
+          items.map((item, i) => (
+            <div key={i}>
+              {item.name === "upload" ? (
+                <button onClick={() => onContainerClick(item.name)}>
+                  Oppfrisk opplastinger
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          ))
+        ) : (
+          <div>
+            <h3>
+              Velkommen til Digimat U - Portal for opplasting av materielldata
+            </h3>
+            {onContainerClick("upload")}
           </div>
-        ))
-      ) : (
-        <div>
-          Welcome Supplier!
-          {onContainerClick("upload")}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

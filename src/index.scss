@@ -83,7 +83,24 @@ code {
     color: black;
   }
 
+  .logoImage {
+    display: inline-block;
+  }
+
+  .slitContent {
+    justify-items: space-between;
+    align-items: center;
+  }
+
   .colorGreen {
     color: green;
+  }
+
+  .getInline {
+    display: inline-block;
+  }
+
+  .tableCell {
+    text-align: center;
   }
 }

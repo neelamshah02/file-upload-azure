@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { tap } from 'rxjs/operators';
-import { DownloadsViewStateContext } from '../contexts/viewStateContext';
-import { BlobItemDownload } from '../types/azure-storage';
+import React, { useContext, useEffect, useState } from "react";
+import { tap } from "rxjs/operators";
+import { DownloadsViewStateContext } from "../contexts/viewStateContext";
+import { BlobItemDownload } from "../types/azure-storage";
 
 const ItemsDownloaded: React.FC = () => {
   const context = useContext(DownloadsViewStateContext);
@@ -9,7 +9,7 @@ const ItemsDownloaded: React.FC = () => {
 
   const getDownloadedItems = () => {
     const sub = context.downloadedItems$
-      .pipe(tap(items => setItems(items)))
+      .pipe(tap((items) => setItems(items)))
       .subscribe();
 
     return () => sub.unsubscribe();
@@ -18,7 +18,7 @@ const ItemsDownloaded: React.FC = () => {
 
   return (
     <div className="items-downloaded">
-      <h3>Downloads</h3>
+      <h3>Nedlastinger</h3>
 
       {items.map((item, i) => (
         <div key={i}>

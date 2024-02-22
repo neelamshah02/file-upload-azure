@@ -1,16 +1,16 @@
-import { BlobDownloadResponseModel } from '@azure/storage-blob';
-import { from, OperatorFunction, Subject } from 'rxjs';
-import { map, mergeMap, startWith, switchMap } from 'rxjs/operators';
-import { BlobContainerRequest, BlobItemDownload } from '../types/azure-storage';
-import { BlobSharedViewStateService } from './BlobSharedViewState';
-import { BlobStorageService } from './BlobStorageService';
+import { BlobDownloadResponseModel } from "@azure/storage-blob";
+import { from, OperatorFunction, Subject } from "rxjs";
+import { map, mergeMap, startWith, switchMap } from "rxjs/operators";
+import { BlobContainerRequest, BlobItemDownload } from "../types/azure-storage";
+import { BlobSharedViewStateService } from "./BlobSharedViewState";
+import { BlobStorageService } from "./BlobStorageService";
 
 export class BlobDownloadsViewStateService {
   private downloadQueueInner$ = new Subject<string>();
 
   downloadedItems$ = this.downloadQueue$.pipe(
-    mergeMap(filename => this.downloadFile(filename)),
-    this.blobState.scanEntries()
+    mergeMap((filename) => this.downloadFile(filename)),
+    this.blobState.scanEntries(),
   );
 
   get downloadQueue$() {
@@ -19,7 +19,7 @@ export class BlobDownloadsViewStateService {
 
   constructor(
     private blobStorage: BlobStorageService,
-    private blobState: BlobSharedViewStateService
+    private blobState: BlobSharedViewStateService,
   ) {}
 
   downloadItem(filename: string): void {
@@ -28,45 +28,45 @@ export class BlobDownloadsViewStateService {
 
   private downloadFile = (filename: string) =>
     this.blobState.getStorageOptionsWithContainer().pipe(
-      switchMap(options =>
+      switchMap((options) =>
         this.blobStorage
           .downloadBlobItem({
             ...options,
-            filename
+            filename,
           })
           .pipe(
             this.getDownloadUrlFromResponse(),
-            this.mapDownloadResponse(filename, options)
-          )
-      )
+            this.mapDownloadResponse(filename, options),
+          ),
+      ),
     );
 
-  private mapDownloadResponse = (
-    filename: string,
-    options: BlobContainerRequest
-  ): OperatorFunction<string, BlobItemDownload> => source =>
-    source.pipe(
-      map(url => ({
-        filename,
-        containerName: options.containerName,
-        url
-      })),
-      startWith({
-        filename,
-        containerName: options.containerName,
-        url: ''
-      })
-    );
+  private mapDownloadResponse =
+    (
+      filename: string,
+      options: BlobContainerRequest,
+    ): OperatorFunction<string, BlobItemDownload> =>
+    (source) =>
+      source.pipe(
+        map((url) => ({
+          filename,
+          containerName: options.containerName,
+          url,
+        })),
+        startWith({
+          filename,
+          containerName: options.containerName,
+          url: "",
+        }),
+      );
 
-  private getDownloadUrlFromResponse = (): OperatorFunction<
-    BlobDownloadResponseModel,
-    string
-  > => source =>
-    source.pipe(
-      switchMap(res =>
-        from(res.blobBody ? res.blobBody : Promise.resolve({})).pipe(
-          map(body => window.URL.createObjectURL(body))
-        )
-      )
-    );
+  private getDownloadUrlFromResponse =
+    (): OperatorFunction<BlobDownloadResponseModel, string> => (source) =>
+      source.pipe(
+        switchMap((res) =>
+          from(res.blobBody ? res.blobBody : Promise.resolve({})).pipe(
+            map((body) => window.URL.createObjectURL(body)),
+          ),
+        ),
+      );
 }

@@ -38,49 +38,86 @@ const ItemsList: React.FC<profile> = (props) => {
 
   return (
     <div className="items-list">
+      {access ? <></> : <h3>Innsendte opplastinger:</h3>}
       <table>
-        <tr>
-          <th>Filnavn</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Lagring</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Actions</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Validering</th>
-        </tr>
         {access ? (
-          items.map((item, i) => (
-            <tr key={i}>
-              <td>{item.name}</td>
-              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>
-                <span>{item.properties.contentLength}</span>
-              </td>
-              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>
-                <button
-                  onClick={() => downloadsContext.downloadItem(item.name)}
-                >
-                  Download
-                </button>
-              </td>
-              <td>
-                <button onClick={() => deletesContext.deleteItem(item.name)}>
-                  Delete
-                </button>
-              </td>
-              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>
-                <h4 className={item.metadata!.color}>
-                  <span>{item.metadata!.tag}</span>
-                </h4>
-              </td>
-            </tr>
-          ))
+          <tr>
+            <th>Filnavn</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Innholdslengde</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Aksjoner</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Sist endret</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Validering</th>
+          </tr>
         ) : (
-          <div></div>
+          <tr>
+            <th>Filnavn</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Lagring</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th>Validering</th>
+          </tr>
         )}
+        {access
+          ? items.map((item, i) => (
+              <tr key={i}>
+                <td>{item.name}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td className="tableCell">
+                  <span>{item.properties.contentLength}</span>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>
+                  <button
+                    onClick={() => downloadsContext.downloadItem(item.name)}
+                  >
+                    Nedlastinger
+                  </button>
+                </td>
+                <td>
+                  <button onClick={() => deletesContext.deleteItem(item.name)}>
+                    Slettet
+                  </button>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td className="tableCell">
+                  <span>{item.properties.lastModified.toISOString()}</span>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td className="tableCell">
+                  <h4 className={item.metadata!.color}>
+                    <span>
+                      {item.metadata!.tag === "Bla"
+                        ? "Validering pågår"
+                        : item.metadata!.tag}
+                    </span>
+                  </h4>
+                </td>
+              </tr>
+            ))
+          : items.map((item, i) => (
+              <tr key={i}>
+                <td>{item.name}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td className="tableCell">
+                  <span>{item.properties.contentLength}</span>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>
+                  <h4 className={item.metadata!.color}>
+                    <span>
+                      {item.metadata!.tag === "Bla"
+                        ? "Validering pågår"
+                        : item.metadata!.tag}
+                    </span>
+                  </h4>
+                </td>
+              </tr>
+            ))}
       </table>
     </div>
   );

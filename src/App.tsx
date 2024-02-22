@@ -32,7 +32,7 @@ const App: React.FC = () => {
         className="button-21"
         onClick={() => onProfileClick(profile.name)}
       >
-        {profile.name === "VENDOR" ? "SUPPLIER" : profile.name}
+        {profile.name === "VENDOR" ? "Projekter" : profile.name}
       </button>
       <Header />
 
@@ -56,6 +56,7 @@ const App: React.FC = () => {
           ) : (
             <div className="item-details-1">
               <ItemsUploaded />
+              <ItemsList user={profile.name} />
             </div>
           )}
         </UserContext.Provider>
