@@ -18,7 +18,9 @@ export class BlobStorageService {
   listBlobsInContainer(request: BlobContainerRequest) {
     const containerClient = this.getContainerClient(request);
     console.log(request);
-    return this.asyncToObservable(containerClient.listBlobsFlat());
+    return this.asyncToObservable(
+      containerClient.listBlobsFlat({ includeMetadata: true }),
+    );
   }
 
   downloadBlobItem(request: BlobFileRequest) {
@@ -53,6 +55,16 @@ export class BlobStorageService {
   }
 
   private uploadFile(blockBlobClient: BlockBlobClient, file: File) {
+    let progress = "";
+    if (
+      file.type ==
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ) {
+      progress = "fail";
+    } else {
+      progress = "pass";
+    }
+
     return new Observable<number>((observer) => {
       blockBlobClient
         .uploadBrowserData(file, {
@@ -60,6 +72,7 @@ export class BlobStorageService {
           blobHTTPHeaders: {
             blobContentType: file.type,
           },
+          metadata: { tag: progress },
         })
         .then(
           this.onUploadComplete(observer, file),
