@@ -40,13 +40,14 @@ const ItemsList: React.FC<profile> = (props) => {
     <div className="items-list">
       <table>
         <tr>
-          <th>File Name</th>
+          <th>Filnavn</th>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Content Length</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Last Modified</th>
+          <th>Lagring</th>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <th>Actions</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <th>Validering</th>
         </tr>
         {access ? (
           items.map((item, i) => (
@@ -55,10 +56,6 @@ const ItemsList: React.FC<profile> = (props) => {
               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               <td>
                 <span>{item.properties.contentLength}</span>
-              </td>
-              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>
-                <span>{item.properties.lastModified.toISOString()}</span>
               </td>
               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               <td>
@@ -72,6 +69,12 @@ const ItemsList: React.FC<profile> = (props) => {
                 <button onClick={() => deletesContext.deleteItem(item.name)}>
                   Delete
                 </button>
+              </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              <td>
+                <h4 className={item.metadata!.color}>
+                  <span>{item.metadata!.tag}</span>
+                </h4>
               </td>
             </tr>
           ))

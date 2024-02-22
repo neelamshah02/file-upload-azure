@@ -56,13 +56,20 @@ export class BlobStorageService {
 
   private uploadFile(blockBlobClient: BlockBlobClient, file: File) {
     let progress = "";
+    let status = "";
+    console.log(file.type);
     if (
-      file.type ==
+      file.type ===
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     ) {
-      progress = "fail";
+      progress = "Validering mislyktes";
+      status = "colorRed";
+    } else if (file.type === "image/png") {
+      progress = "Validering pågår";
+      status = "colorBlack";
     } else {
-      progress = "pass";
+      progress = "Validering velykket";
+      status = "colorGreen";
     }
 
     return new Observable<number>((observer) => {
@@ -72,7 +79,7 @@ export class BlobStorageService {
           blobHTTPHeaders: {
             blobContentType: file.type,
           },
-          metadata: { tag: progress },
+          metadata: { tag: progress, color: status },
         })
         .then(
           this.onUploadComplete(observer, file),
