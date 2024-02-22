@@ -17,7 +17,6 @@ export class BlobStorageService {
 
   listBlobsInContainer(request: BlobContainerRequest) {
     const containerClient = this.getContainerClient(request);
-    console.log(request);
     return this.asyncToObservable(
       containerClient.listBlobsFlat({ includeMetadata: true }),
     );
@@ -57,7 +56,6 @@ export class BlobStorageService {
   private uploadFile(blockBlobClient: BlockBlobClient, file: File) {
     let progress = "";
     let status = "";
-    console.log(file.type);
     if (
       file.type ===
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
