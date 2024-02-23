@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/file-upload-azure/static/css/main.d82b5980.chunk.css",
-    "main.js": "/file-upload-azure/static/js/main.b7044e64.chunk.js",
-    "main.js.map": "/file-upload-azure/static/js/main.b7044e64.chunk.js.map",
+    "main.js": "/file-upload-azure/static/js/main.b68823bf.chunk.js",
+    "main.js.map": "/file-upload-azure/static/js/main.b68823bf.chunk.js.map",
     "runtime-main.js": "/file-upload-azure/static/js/runtime-main.87cdb06a.js",
     "runtime-main.js.map": "/file-upload-azure/static/js/runtime-main.87cdb06a.js.map",
     "static/js/2.2337e4ef.chunk.js": "/file-upload-azure/static/js/2.2337e4ef.chunk.js",
     "static/js/2.2337e4ef.chunk.js.map": "/file-upload-azure/static/js/2.2337e4ef.chunk.js.map",
     "index.html": "/file-upload-azure/index.html",
-    "precache-manifest.bb6c1e2a11712029c8af044ef56c53d3.js": "/file-upload-azure/precache-manifest.bb6c1e2a11712029c8af044ef56c53d3.js",
+    "precache-manifest.c03ad77a1f3969e20327a5b16545c48a.js": "/file-upload-azure/precache-manifest.c03ad77a1f3969e20327a5b16545c48a.js",
     "service-worker.js": "/file-upload-azure/service-worker.js",
     "static/css/main.d82b5980.chunk.css.map": "/file-upload-azure/static/css/main.d82b5980.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.87cdb06a.js",
     "static/js/2.2337e4ef.chunk.js",
     "static/css/main.d82b5980.chunk.css",
-    "static/js/main.b7044e64.chunk.js"
+    "static/js/main.b68823bf.chunk.js"
   ]
 }
