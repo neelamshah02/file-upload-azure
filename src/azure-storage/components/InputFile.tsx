@@ -19,8 +19,9 @@ const InputFile: React.FC = () => {
         type="file"
         multiple={true}
         onChange={(e) => uploadFiles(e.target.files)}
+        className="file-input"
       />
-      <button onClick={() => showFileDialog()}>
+      <button className="btn" onClick={() => showFileDialog()}>
         Trykk her for å last opp fil
       </button>
     </div>

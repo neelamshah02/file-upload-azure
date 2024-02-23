@@ -26,21 +26,17 @@ const App: React.FC = () => {
     }
   };
   return (
-    <>
-      <button
-        className="button-21"
-        onClick={() => onProfileClick(profile.name)}
-      >
-        {profile.name === "VENDOR" ? "Projekter" : profile.name}
+    <div className="container">
+      <button className="btn" onClick={() => onProfileClick(profile.name)}>
+        {profile.name === "VENDOR" ? "Leverandør" : profile.name}
       </button>
       <Header />
-
       <hr />
       <UserContext.Provider value={profile}>
         <ContainerList user={profile.name} />
       </UserContext.Provider>
       <hr />
-      <SelectedContainer className="container">
+      <SelectedContainer>
         {profile.name !== "VENDOR" ? <div></div> : <InputFile />}
         <UserContext.Provider value={profile}>
           {profile.name !== "VENDOR" ? (
@@ -60,7 +56,7 @@ const App: React.FC = () => {
           )}
         </UserContext.Provider>
       </SelectedContainer>
-    </>
+    </div>
   );
 };
 
