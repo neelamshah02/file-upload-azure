@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "febf6f8467280dd88da8c69f3020ce1a",
+    "revision": "17db9cfc09720b78f595a478d67521d4",
     "url": "/file-upload-azure/index.html"
   },
   {
-    "revision": "19cb6e2d431ad8bcf01a",
-    "url": "/file-upload-azure/static/css/main.9f33d63c.chunk.css"
+    "revision": "394866b0c18826cb285c",
+    "url": "/file-upload-azure/static/css/main.8643c453.chunk.css"
   },
   {
     "revision": "13333c1a984a0e3d4c71",
     "url": "/file-upload-azure/static/js/2.2337e4ef.chunk.js"
   },
   {
-    "revision": "19cb6e2d431ad8bcf01a",
+    "revision": "394866b0c18826cb285c",
     "url": "/file-upload-azure/static/js/main.622265dc.chunk.js"
   },
   {
