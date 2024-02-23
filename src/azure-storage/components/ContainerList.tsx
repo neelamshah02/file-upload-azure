@@ -36,7 +36,7 @@ const ContainerList: React.FC<profile> = (props) => {
   return (
     <div className="container-list">
       <div className="splitContent">
-        <img src="../../forsvar.jpg" alt="forvars logo" className="logoImage" />
+        <img src="forsvar.jpg" alt="forvars logo" className="logoImage" />
         {access ? (
           items.map((item, i) => (
             <div key={i}>
