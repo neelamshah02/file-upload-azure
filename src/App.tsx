@@ -12,7 +12,6 @@ import "./test.css";
 interface profileView {
   name: string;
 }
-// text
 const App: React.FC = () => {
   const [profile, setProfile] = useState<profileView>({ name: "VENDOR" });
   const UserContext = React.createContext<profileView>({
